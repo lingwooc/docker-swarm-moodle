@@ -7,3 +7,5 @@ Replace the following tags in the files:
  - #user# - database password
  - #password# - database username 
  - #registry# - url of the private registry
+
+Run `./deploy` to build and deploy to a swarm.
