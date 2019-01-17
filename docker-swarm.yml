@@ -1,0 +1,36 @@
+version: '3'
+services:
+  apache:
+    image: #registry#/moodle
+    networks:
+      - db
+      - dockertraefik_pub
+    volumes:
+      - moodle_data:/var/www/moodledata:rw
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+  postgres:
+    image: postgres:11.1
+    volumes:
+      - /moodle_db:/var/lib/mysql:rw
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks: 
+      - db
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == margo
+    environment:
+     - POSTGRES_USER=#user#
+     - POSTGRES_PASSWORD=#password#
+
+networks:
+  db:
+    internal: true
+  dockertraefik_pub:
+    external: true
+
+volumes:
+  moodle_data:
+  moodle_db:
