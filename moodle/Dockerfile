@@ -25,9 +25,9 @@ RUN apt-get update \
 
 #build and install php modules
 RUN docker-php-ext-configure \
-    xmlrpc \
     gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/; \
   docker-php-ext-install \
+    xmlrpc \
     pgsql \
     gd \
     intl \
