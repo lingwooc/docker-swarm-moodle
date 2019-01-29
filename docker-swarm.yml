@@ -12,7 +12,7 @@ services:
   postgres:
     image: postgres:11.1
     volumes:
-      - /moodle_db:/var/lib/mysql:rw
+      - /moodle_db:dle_db:/var/lib/postgresql:rw
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks: 
